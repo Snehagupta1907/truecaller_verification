@@ -1,16 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const cors=require('cors');
 
 const app = express();
 const PORT = 6000;
 
 app.use(bodyParser.json());
+app.use(cors());
 
-// Store request ID and access token mapping
 const requestMap = new Map();
 
-// Endpoint to receive callback from Truecaller
+
 
 app.get('/callback', (req, res) => {
     
