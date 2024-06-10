@@ -9,7 +9,7 @@ const VerifyMobile = () => {
 
     const startVerification = () => {
         const uniqueRequestId = generateUniqueId();
-        const deepLink = `truecallersdk://truesdk/web_verify?type=btmsheet&requestNonce=${uniqueRequestId}&partnerKey=spy30b67478007fd14087bfe21de6f3853933&partnerName=demo-app&lang=en&privacyUrl=YOUR_PRIVACY_POLICY_URL&termsUrl=YOUR_TERMS_URL&loginPrefix=proceedwith&loginSuffix=verifymobile&ctaPrefix=continuewith&ctaColor=%23f75d34&ctaTextColor=%23ffffff&btnShape=rect&skipOption=useanothermethod&ttl=8000`;
+        const deepLink = `truecallersdk://truesdk/web_verify?type=btmsheet&requestNonce=${uniqueRequestId}&partnerKey=g0KFJc6ec32c993174d288b752f9868cf5bd9&partnerName=demo-app&lang=en&loginPrefix=proceedwith&loginSuffix=verifymobile&ctaPrefix=continuewith&ctaColor=%23f75d34&ctaTextColor=%23ffffff&btnShape=rect&skipOption=useanothermethod&ttl=8000`;
 
         setRequestId(uniqueRequestId);
         setVerificationStarted(true);
