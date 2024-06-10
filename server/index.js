@@ -30,7 +30,7 @@ app.get('/profile', async (req, res) => {
     console.log("inside")
     const { requestId } = req.query;
     if (requestMap.has(requestId)) {
-        const { accessToken, endpoint } = requestMap.get(requestId);
+        const { accessToken } = requestMap.get(requestId);
         try {
             const response = await axios.get(`https://profile4-noneu.truecaller.com/v1/default`, {
                 headers: { Authorization: `Bearer ${accessToken}` },
