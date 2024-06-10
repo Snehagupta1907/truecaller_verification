@@ -19,9 +19,9 @@ app.get('/callback', (req, res) => {
     res.status(200).send('Callback received');
 });
 app.post('/callback', (req, res) => {
-    const { requestId, accessToken, endpoint } = req.body;
+    const { requestId, accessToken } = req.body;
     console.log(req)
-    requestMap.set(requestId, { accessToken, endpoint });
+    requestMap.set(requestId, { accessToken });
     res.status(200).send('Callback received');
 });
 
@@ -32,7 +32,7 @@ app.get('/profile', async (req, res) => {
     if (requestMap.has(requestId)) {
         const { accessToken, endpoint } = requestMap.get(requestId);
         try {
-            const response = await axios.get(endpoint, {
+            const response = await axios.get(`https://profile4-noneu.truecaller.com/v1/default`, {
                 headers: { Authorization: `Bearer ${accessToken}` },
             });
             res.json({ success: true, profile: response.data });
