@@ -4,7 +4,7 @@ import axios from 'axios';
 const VerifyMobile = () => {
     const [verificationStarted, setVerificationStarted] = useState(false);
     const [requestId, setRequestId] = useState('');
-    const [profileData, setProfileData] = useState(null);
+    const [profileData, setProfileData] = useState([]);
     const [message, setMessage] = useState('');
 
     const startVerification = () => {
@@ -35,7 +35,7 @@ const VerifyMobile = () => {
             try {
                 const response = await axios.get(`https://truecaller-back.vercel.app/profile?requestId=${requestId}`);
                 if (response.data.success) {
-                    setProfileData(response.data.profile);
+                    setProfileData(response.data.phoneNumbers);
                     clearInterval(intervalId);
                 } else if (pollingCount >= maxPollingAttempts) {
                     setMessage('Verification failed. Please try again.');
