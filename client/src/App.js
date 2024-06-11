@@ -33,7 +33,7 @@ const VerifyMobile = () => {
         const intervalId = setInterval(async () => {
             pollingCount++;
             try {
-                const response = await axios.get(`http://localhost:6000/profile?requestId=${requestId}`);
+                const response = await axios.get(`https://truecaller-back.vercel.app/profile?requestId=${requestId}`);
                 if (response.data.success) {
                     setProfileData(response.data.profile);
                     clearInterval(intervalId);
