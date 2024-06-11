@@ -34,7 +34,7 @@ app.get('/profile', async (req, res) => {
         const { accessToken } = requestMap.get(requestId);
         try {
             const response = await axios.get(`https://profile4-noneu.truecaller.com/v1/default`, {
-                headers: { Authorization: `Bearer ${accessToken}` },
+                headers: { Authorization: `Bearer a1k0L--nM_8Bt-HFYwuispNCSVrzvntvO7t47AQH2gQlrQUDpQeC4LGTx7Ibti-O` },
             });
             res.json({ success: true, profile: response.data });
         } catch (error) {
