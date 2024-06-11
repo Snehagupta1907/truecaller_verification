@@ -9,7 +9,7 @@ const VerifyMobile = () => {
 
     const startVerification = () => {
         const uniqueRequestId = generateUniqueId();
-        const deepLink = `truecallersdk://truesdk/web_verify?type=btmsheet&requestNonce=${uniqueRequestId}&partnerKey=g0KFJc6ec32c993174d288b752f9868cf5bd9&partnerName=demo-app&lang=en&loginPrefix=proceedwith&loginSuffix=verifymobile&ctaPrefix=continuewith&ctaColor=%23f75d34&ctaTextColor=%23ffffff&btnShape=rect&skipOption=useanothermethod&ttl=8000`;
+        const deepLink = `truecallersdk://truesdk/web_verify?type=btmsheet&requestNonce=${uniqueRequestId}&partnerKey=g0KFJc6ec32c993174d288b752f9868cf5bd9&partnerName=demo&lang=en&loginPrefix=proceedwith&loginSuffix=verifymobile&ctaPrefix=continuewith&ctaColor=%23f75d34&ctaTextColor=%23ffffff&btnShape=rect&skipOption=useanothermethod&ttl=8000`;
 
         setRequestId(uniqueRequestId);
         setVerificationStarted(true);
@@ -20,7 +20,6 @@ const VerifyMobile = () => {
                 setMessage('Truecaller app not found. Please use an alternative verification method.');
                 setVerificationStarted(false);
             } else {
-                // Truecaller app present, start polling for profile data
                 pollForProfileData(uniqueRequestId);
             }
         }, 600);
@@ -34,7 +33,7 @@ const VerifyMobile = () => {
         const intervalId = setInterval(async () => {
             pollingCount++;
             try {
-                const response = await axios.get(`https://truecaller-back.vercel.app/profile?requestId=${requestId}`);
+                const response = await axios.get(`http://localhost:6000/profile?requestId=${requestId}`);
                 if (response.data.success) {
                     setProfileData(response.data.profile);
                     clearInterval(intervalId);

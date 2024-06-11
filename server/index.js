@@ -19,14 +19,13 @@ app.get('/callback', (req, res) => {
     // requestMap.set(requestId, { accessToken, endpoint });
     res.status(200).send('Callback received');
 });
-app.post('/callback', (req, res) => {
+app.post('/callback', async (req, res) => {
     const { requestId, accessToken } = req.body;
     console.log(req)
     requestMap.set(requestId, { accessToken });
     res.status(200).send('Callback received');
 });
 
-// Endpoint to fetch profile data
 app.get('/profile', async (req, res) => {
     console.log("inside")
     const { requestId } = req.query;
