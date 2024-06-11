@@ -9,7 +9,7 @@ const VerifyMobile = () => {
 
     const startVerification = () => {
         const uniqueRequestId = generateUniqueId();
-        const deepLink = `truecallersdk://truesdk/web_verify?type=btmsheet&requestNonce=${uniqueRequestId}&partnerKey=g0KFJc6ec32c993174d288b752f9868cf5bd9&partnerName=demo&lang=en&loginPrefix=proceedwith&loginSuffix=verifymobile&ctaPrefix=continuewith&ctaColor=%23f75d34&ctaTextColor=%23ffffff&btnShape=rect&skipOption=useanothermethod&ttl=8000`;
+        const deepLink = `truecallersdk://truesdk/web_verify?type=btmsheet&requestNonce=${uniqueRequestId}&partnerKey=AHJkbb8c4cd32dd0e49d2a4497aa7444df66c&partnerName=demo&lang=en&loginPrefix=proceedwith&loginSuffix=verifymobile&ctaPrefix=continuewith&ctaColor=%23f75d34&ctaTextColor=%23ffffff&btnShape=rect&skipOption=useanothermethod&ttl=8000`;
 
         setRequestId(uniqueRequestId);
         setVerificationStarted(true);
@@ -20,7 +20,7 @@ const VerifyMobile = () => {
                 setMessage('Truecaller app not found. Please use an alternative verification method.');
                 setVerificationStarted(false);
             } else {
-                pollForProfileData(uniqueRequestId);
+                setTimeout(() => pollForProfileData(uniqueRequestId), 20000);
             }
         }, 600);
     };
@@ -42,7 +42,7 @@ const VerifyMobile = () => {
                     clearInterval(intervalId);
                 }
             } catch (error) {
-              console.log(error,"inside this");
+                console.log(error, "inside this");
                 setMessage('Error fetching profile data.');
                 clearInterval(intervalId);
             }

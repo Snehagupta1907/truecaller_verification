@@ -29,6 +29,7 @@ app.post('/callback', async (req, res) => {
 app.get('/profile', async (req, res) => {
     console.log("inside")
     const { requestId } = req.query;
+    console.log(requestId)
     if (requestMap.has(requestId)) {
         const { accessToken } = requestMap.get(requestId);
         try {
